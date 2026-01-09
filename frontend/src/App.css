@@ -1,0 +1,17 @@
+/* Main App Styles */
+
+.App {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  color: #666666;
+}

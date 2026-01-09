@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Station {
+  id           Int            @id @default(autoincrement())
+  name         String         @unique
+  code         String         @unique
+  zone         String?
+  routeStops   RouteStop[]
+}
+
+model RoutePattern {
+  id              Int          @id @default(autoincrement())
+  routeNumber     String
+  routeType       String       // "bus", "train", "rapid", "express"
+  // Schedule pattern format: "HH:MM-HH:MM@freq,HH:MM-HH:MM@freq,..."
+  // Example: "05:30-09:00@8,09:00-15:30@12,15:30-18:30@8,18:30-23:30@15"
+  schedulePattern String
+  routeStops      RouteStop[]
+}
+
+model RouteStop {
+  id             Int          @id @default(autoincrement())
+  routePatternId Int
+  stationId      Int
+  destination    String
+  direction      String?
+  platform       String?
+  headsign       String?
+  // Offset in minutes from pattern start (for staggered arrivals at different stops)
+  offsetMinutes  Int          @default(0)
+  
+  routePattern   RoutePattern @relation(fields: [routePatternId], references: [id])
+  station        Station      @relation(fields: [stationId], references: [id])
+  
+  @@unique([routePatternId, stationId, destination])
+}

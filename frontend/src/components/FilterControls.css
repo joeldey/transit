@@ -1,0 +1,33 @@
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 18px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-label {
+  font-size: 13px;
+  color: #666666;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.filterSelect {
+  padding: 6px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #333333;
+  background-color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
